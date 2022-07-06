@@ -185,7 +185,7 @@ export default {
         width: 100px;
         height: 40px;
         font-size: 20px;
-        @media screen and (max-width: 400px) {
+        @media screen and (max-width: 450px) {
           display: none;
         }
       }
