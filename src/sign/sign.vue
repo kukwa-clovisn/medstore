@@ -2,35 +2,40 @@
   <main>
     <div class="main-container">
       <transition name="fade-in">
-        <div class="menu" v-if="menu">
-          <div class="logo">
-            <div class="logo-img">MS</div>
+        <div class="menu" v-if="!menu">
+          <div class="logo" @click="toggleOut">
+            <div class="logo-img">
+              <i class="fa-solid fa-pills top-left"></i
+              ><i class="fa-solid fa-syringe top-right"></i>
+              <i class="fa-solid fa-stethoscope round-left"></i>
+              <i class="fa-solid fa-prescription-bottle-medical"></i>
+            </div>
             <h1>Medic <span>Store</span></h1>
           </div>
           <div class="items">
-            <li>
+            <li @click="toggleOut">
               <router-link to="/account/signin" class="link"
                 ><i class="fa-solid fa-arrow-right-to-bracket"></i>sign
                 in</router-link
               >
             </li>
-            <li>
+            <li @click="toggleOut">
               <router-link to="/account/signup" class="link"
                 ><i class="fa-solid fa-user-plus"></i>signup</router-link
               >
             </li>
-            <li>
+            <li @click="toggleOut">
               <router-link to="/account/password-reset" class="link">
                 <i class="fa-solid fa-key"></i>Forgot password</router-link
               >
             </li>
-            <li>
-              <router-link to="/account/password-reset" class="link">
+            <li @click="toggleOut">
+              <router-link to="/" class="link">
                 <i class="fa-solid fa-circle-info"></i>about us</router-link
               >
             </li>
-            <li>
-              <router-link to="/account/password-reset" class="link">
+            <li @click="toggleOut">
+              <router-link to="/" class="link">
                 <i class="fa-solid fa-person-circle-question"></i>why
                 us?</router-link
               >
@@ -43,60 +48,14 @@
           </div>
         </div>
       </transition>
-      <transition name="fade-in">
-        <div class="menu minimize" v-if="active">
-          <div class="logo">
-            <div class="logo-img">MS</div>
-          </div>
-          <div class="items">
-            <li>
-              <router-link to="/account/signin" class="link"
-                ><i class="fa-solid fa-arrow-right-to-bracket"></i
-              ></router-link>
-            </li>
-            <li>
-              <router-link to="/account/signup" class="link"
-                ><i class="fa-solid fa-user-plus"></i
-              ></router-link>
-            </li>
-            <li>
-              <router-link to="/account/password-reset" class="link">
-                <i class="fa-solid fa-key"></i
-              ></router-link>
-            </li>
-            <li>
-              <router-link to="/account/password-reset" class="link">
-                <i class="fa-solid fa-circle-info"></i
-              ></router-link>
-            </li>
-            <li>
-              <router-link to="/account/password-reset" class="link">
-                <i class="fa-solid fa-person-circle-question"></i
-              ></router-link>
-            </li>
-            <li>
-              <router-link to="/" class="link">
-                <i class="fa-solid fa-house"></i
-              ></router-link>
-            </li>
-          </div>
-        </div>
-      </transition>
 
       <div class="router-view" :class="{ active: active }">
         <header>
-          <i
-            class="fa-solid fa-align-left"
-            @click="toggleIn"
-            v-if="!active"
-          ></i>
-          <i
-            class="fa-solid fa-align-left"
-            @click="toggleOut"
-            v-if="active"
-          ></i>
+          <i class="fa-solid fa-bars" @click="toggleIn" v-if="!active"></i>
+          <i class="fa-solid fa-bars" @click="toggleOut" v-if="active"></i>
+          <h1>Medic <span>Store</span></h1>
         </header>
-        <router-view v-slot="{ Component }">
+        <router-view v-slot="{ Component }" @click="toggleOut">
           <transition name="fade">
             <component :is="Component"></component> </transition
         ></router-view>
@@ -181,29 +140,13 @@ main {
         flex-direction: column;
         border-bottom: 1px solid rgb(214, 214, 214);
         padding: 5px 0;
-        .logo-img {
-          width: 100px;
-          height: 100px;
-          border-radius: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          font: 800 50px "Grand Hotel", cursive;
-          background: rgb(2, 122, 186);
-          color: white;
-          margin: 5px auto;
-
-          &::first-letter {
-            color: tomato;
-          }
-        }
 
         h1 {
           display: flex;
           justify-content: center;
           align-items: center;
           margin: 0;
+          font-size: 25px;
 
           span {
             color: tomato;
@@ -237,6 +180,7 @@ main {
             align-items: center;
             color: rgb(100, 100, 100);
             text-transform: capitalize;
+            font-size: 12px;
 
             i {
               height: 100%;
@@ -257,7 +201,7 @@ main {
             &.router-link-exact-active {
               color: #42b983;
               border-left: 5px solid tomato;
-              background: rgb(234, 233, 233);
+              background: rgb(237, 236, 236);
               color: tomato;
               i {
                 color: tomato;
@@ -266,35 +210,35 @@ main {
           }
         }
       }
-    }
-    .menu.minimize {
-      width: 5vw;
+      @media screen and (max-width: 768px) {
+        width: 100vw;
+        z-index: 1;
+        position: fixed;
+        top: 10vh;
+        left: 0;
 
-      .logo {
-        height: 20vh;
-        .logo-img {
-          width: 50px;
-          height: 50px;
-          font-size: 30px;
-        }
-      }
-      .items {
-        height: 78vh;
-        li .link i {
-          width: 100%;
+        .items {
+          li {
+            height: 55px;
+            .link {
+              font-size: 15px;
+            }
+          }
         }
       }
     }
     .router-view {
-      width: 80%;
+      width: 100%;
       height: 100vh;
       overflow: hidden;
-      overflow-y: scroll;
+      overflow-y: auto;
       border-radius: 9px 0 0 0;
+      padding-top: 11vh;
+      padding-bottom: 20px;
 
       header {
-        height: 5vh;
-        width: 80%;
+        height: 10vh;
+        width: 100%;
         background: rgb(2, 122, 186);
         position: fixed;
         top: 0;
@@ -309,6 +253,17 @@ main {
         i {
           cursor: pointer;
           margin-left: 15px;
+          font-size: 27px;
+        }
+        h1 {
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 23px;
+          span {
+            color: tomato;
+          }
         }
       }
 
@@ -322,9 +277,16 @@ main {
       }
     }
     .router-view.active {
-      width: 95vw;
+      width: 80vw;
       header {
-        width: 95vw;
+        width: 80vw;
+      }
+
+      @media screen and (max-width: 768px) {
+        width: 100vw;
+        header {
+          width: 100vw;
+        }
       }
     }
   }

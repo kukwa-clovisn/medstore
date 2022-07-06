@@ -6,11 +6,11 @@ module.exports = defineConfig({
 const path = require("path");
 
 module.exports = {
-  outputDir: path.resolve(__dirname, "../medstore_server/public"),
+  outputDir: path.resolve(__dirname, "../medicstore_server/public"),
   devServer: {
     proxy: {
       "/api": {
-        target: "http://localhost:9002",
+        target: "http://localhost:9005",
       },
     },
   },

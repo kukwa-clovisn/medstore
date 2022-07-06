@@ -1,15 +1,41 @@
 <template>
   <div class="home">
-    <header>Medic <span>store</span></header>
     <div class="container">
+      <header>
+        <nav class="left-nav">
+          <div class="logo-img">
+            <i class="fa-solid fa-pills top-left"></i
+            ><i class="fa-solid fa-syringe top-right"></i>
+            <i class="fa-solid fa-stethoscope round-left"></i>
+            <i class="fa-solid fa-prescription-bottle-medical"></i>
+          </div>
+          <h1>Medic <span>Store</span></h1>
+        </nav>
+        <nav class="right-nav">
+          <router-link to="/account/signin" class="link">sign in</router-link>
+        </nav>
+      </header>
       <transition name="swipeRight">
         <div class="content" v-if="swipe.pageone">
           <img src="../assets/medic.jpg" alt="" />
           <div class="blur"></div>
           <div class="start">
             <h2>Welcome to</h2>
+
             <h1>Medic <span>store</span></h1>
-            <button>Get Started</button>
+            <div class="logo-img">
+              <i class="fa-solid fa-pills top-left"></i
+              ><i class="fa-solid fa-syringe top-right"></i>
+              <i class="fa-solid fa-stethoscope round-left"></i>
+              <i class="fa-solid fa-prescription-bottle-medical"></i>
+            </div>
+            <p>Get started to see what MedicStore has prepared for you....</p>
+
+            <button>
+              <router-link to="/account/signin" class="link"
+                >Get started</router-link
+              >
+            </button>
           </div>
         </div>
       </transition>
@@ -18,19 +44,20 @@
           <img src="../assets/Medical-Exemption-WEB.jpg" alt="" />
           <div class="blur"></div>
           <div class="sample">
-            <div class="left">
-              <h1>this is left sample</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium fugiat corrupti, blanditiis numquam odio, beatae
-                natus inventore modi consequatur perferendis delectus vitae quia
-                amet. Eligendi et sequi at repellendus perspiciatis eveniet,
-                quia voluptatum natus labore quam. Rem ab voluptate, quisquam
-                labore ea culpa. Temporibus earum animi pariatur? Ex, iste
-                aspernatur.
-              </p>
-            </div>
-            <div class="right"></div>
+            <h1>Get the drug of your choice!</h1>
+            <p>
+              MedicStore is an online platform where you can find drugs for
+              companies. We also handle distrubution of drugs. We serve as a
+              middleman so we don't sell drugs on this site we simply advertize
+              and store the drug data so anyone claiming to sell from this site
+              is a fraud and a scam. <br />
+              Enjoy your walk through MedicStore.
+            </p>
+            <button>
+              <router-link to="/account/signin" class="link"
+                >Get Started</router-link
+              >
+            </button>
           </div>
         </div>
       </transition>
@@ -88,7 +115,7 @@ export default {
     setInterval(() => {
       swipe.pageone = !swipe.pageone;
       swipe.pagetwo = !swipe.pagetwo;
-    }, 10000);
+    }, 15000);
 
     return { swipe };
   },
@@ -120,22 +147,49 @@ export default {
   height: fit-content;
   header {
     width: 100%;
-    height: 10vh;
+    height: 18vh;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     text-align: left;
-    padding: 20px;
     font: 700 30px "Poppins", sans-serif;
+    z-index: 1;
 
-    span {
-      color: tomato;
+    .left-nav {
+      margin-left: 3%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        color: rgb(210, 209, 209);
+        span {
+          color: tomato;
+        }
+      }
+    }
+    .right-nav {
+      margin-right: 5%;
+      .link {
+        text-decoration: none;
+        color: rgb(218, 215, 215);
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+      }
     }
   }
 
   .container {
     width: 100%;
-    min-height: 84vh;
+    min-height: 100vh;
     position: relative;
     .blur {
       width: 100%;
@@ -150,25 +204,23 @@ export default {
       width: 100%;
       height: 100%;
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
       overflow: hidden;
 
       img {
-        width: 100%;
-        min-height: 100%;
+        width: auto;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        bottom: 0;
       }
 
       .start {
         width: 100%;
         height: 70%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-direction: center;
-        flex-direction: column;
         position: absolute;
-        top: 0;
+        top: 17%;
         left: 0;
         z-index: 1.4;
 
@@ -178,9 +230,17 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
+          padding: 10px;
+          margin: 0;
           span {
             color: tomato;
           }
+        }
+        h2 {
+          margin: 0;
+        }
+        p {
+          padding: 0 5px;
         }
         button {
           width: 250px;
@@ -190,29 +250,51 @@ export default {
           cursor: pointer;
           position: relative;
           z-index: 1;
+
+          .link {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+          }
         }
       }
 
       .sample {
         width: 100%;
         height: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
         position: absolute;
-        top: 0;
+        top: 17%;
         left: 0;
-        //z-index:1;
+        h1 {
+          position: relative;
+          color: white;
+          padding: 20px 10px;
+        }
+        p {
+          color: whitesmoke;
+          padding: 10px 20px;
+        }
+        button {
+          width: 250px;
+          height: 50px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          position: relative;
+          z-index: 1;
 
-        .left {
-          width: 60%;
-          height: fit-content;
-          h1 {
-            position: relative;
-            color: white;
-          }
-          p {
-            color: whitesmoke;
+          .link {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
           }
         }
       }
