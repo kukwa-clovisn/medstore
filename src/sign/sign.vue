@@ -54,6 +54,9 @@
           <i class="fa-solid fa-bars" @click="toggleIn" v-if="!active"></i>
           <i class="fa-solid fa-bars" @click="toggleOut" v-if="active"></i>
           <h1>Medic <span>Store</span></h1>
+          <router-link to="/" class="route">
+            <i class="fa-solid fa-arrow-right-from-bracket home"></i
+          ></router-link>
         </header>
         <router-view v-slot="{ Component }" @click="toggleOut">
           <transition name="fade">
@@ -247,13 +250,21 @@ main {
         color: white;
         font-size: 23px;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
 
         i {
           cursor: pointer;
           margin-left: 15px;
           font-size: 27px;
+        }
+
+        .home {
+          margin-right: 20px;
+        }
+        .route {
+          text-decoration: none;
+          color: inherit;
         }
         h1 {
           color: white;

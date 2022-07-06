@@ -145,6 +145,8 @@ export default {
 .home {
   width: 100vw;
   height: fit-content;
+  overflow: hidden;
+  overflow-y: auto;
   header {
     width: 100%;
     height: 18vh;
@@ -169,7 +171,7 @@ export default {
         justify-content: center;
         align-items: center;
         font-size: 20px;
-        color: rgb(210, 209, 209);
+        color: rgb(238, 237, 237);
         span {
           color: tomato;
         }
@@ -183,13 +185,16 @@ export default {
         width: 100px;
         height: 40px;
         font-size: 20px;
+        @media screen and (max-width: 400px) {
+          display: none;
+        }
       }
     }
   }
 
   .container {
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
     .blur {
       width: 100%;
@@ -217,11 +222,11 @@ export default {
       }
 
       .start {
-        width: 100%;
+        width: 90%;
         height: 70%;
         position: absolute;
-        top: 17%;
-        left: 0;
+        top: 20%;
+        left: 5%;
         z-index: 1.4;
 
         color: white;
@@ -234,6 +239,10 @@ export default {
           margin: 0;
           span {
             color: tomato;
+          }
+
+          @media screen and (max-width: 400px) {
+            font-size: 45px;
           }
         }
         h2 {
@@ -264,11 +273,12 @@ export default {
       }
 
       .sample {
-        width: 100%;
-        height: 100%;
+        width: 95%;
+        height: fit-content;
         position: absolute;
-        top: 17%;
-        left: 0;
+        top: 20%;
+        left: 2.5%;
+        overflow: auto;
         h1 {
           position: relative;
           color: white;
@@ -295,6 +305,15 @@ export default {
             align-items: center;
             text-decoration: none;
             color: inherit;
+          }
+        }
+        @media screen and (max-width: 500px) {
+          h1 {
+            padding: 10px;
+          }
+          p {
+            font-size: 14px;
+            padding: 10px;
           }
         }
       }
