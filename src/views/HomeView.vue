@@ -17,7 +17,7 @@
       </header>
       <transition name="swipeRight">
         <div class="content" v-if="swipe.pageone">
-          <img src="../assets/medic.jpg" alt="" />
+          <img src="../assets/medic.jpeg" alt="" />
           <div class="blur"></div>
           <div class="start">
             <h2>Welcome to</h2>
